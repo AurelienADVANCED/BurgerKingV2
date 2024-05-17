@@ -3,24 +3,21 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import React, { useEffect, useState } from 'react';
 import * as Font from 'expo-font';
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation, useRoute } from '@react-navigation/native';
+import { RootStackParamList } from './types';
 
-interface CardItem {
-  key: string;
-  source: any; // Utilise un type plus spécifique si tu connais le type exact
-  destination: string;
-}
 
-export default function Second() {
+export default function Menu() {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const { bottom, left, right, top } = useSafeAreaInsets();
-  const themeName = useColorScheme();
-  const navigation = useNavigation();
+  const route = useRoute();
+  const { item } = route.params as { item: CardItem };
 
   const windowWidth = Dimensions.get('window').width;
   const itemWidth = windowWidth / 2 - 30;
 
-  const onPress = (item : CardItem) => {
-    //navigation.navigate(item.destination);
+  const onPress = (menuItem: MenuItem) => {
+    navigation.navigate("Product", { menuItem });
   }
 
   const styles = StyleSheet.create({
@@ -62,16 +59,61 @@ export default function Second() {
     },
   });
 
-  const card: CardItem[] = [
-    { key: 'Nouveautés', source: require('../assets/images/bkicons/nouveautes.png'), destination: 'new' },
-    { key: 'Menus', source: require('../assets/images/bkicons/menus.png'), destination: 'menus'},
-    { key: 'Burgers', source: require('../assets/images/bkicons/burgers.png'), destination: 'burgers' },
-    { key: 'Menus enfants', source: require('../assets/images/bkicons/menus_enfants.png'), destination: 'kids' },
-    { key: 'Snacks', source: require('../assets/images/bkicons/snacks.png'), destination: 'snacks'},
-    { key: 'Desserts', source: require('../assets/images/bkicons/desserts.png'), destination: 'desserts' },
-  ];
+  const cards: { [key: string] : MenuItem[]} = {
+    'Nouveautés': [
+      {
+        key: 'Japan Cheesy Steakhouse',
+        source: require('../assets/images/bkicons/nouveautes.png'),
+      },
+      {
+        key: 'Indian Chicken Steakhouse',
+        source: require('../assets/images/bkicons/nouveautes.png'),
+      },
+      {
+        key: 'French Steakhouse',
+        source: require('../assets/images/bkicons/nouveautes.png'),
+      },
+      {
+        key: 'Veggie Japan Steakhouse',
+        source: require('../assets/images/bkicons/nouveautes.png'),
+      },
+      {
+        key: 'Chicken Spicy',
+        source: require('../assets/images/bkicons/nouveautes.png'),
+      },
+      {
+        key: 'Italian Chicken Bowl',
+        source: require('../assets/images/bkicons/nouveautes.png'),
+      },
+      {
+        key: 'King Fusion Smarties®',
+        source: require('../assets/images/bkicons/nouveautes.png'),
+      },
+      {
+        key: 'Mini KING FUSION Smarties®',
+        source: require('../assets/images/bkicons/nouveautes.png'),
+      },
+      {
+        key: 'KING FUSION au Nutella®',
+        source: require('../assets/images/bkicons/nouveautes.png'),
+      },
+      {
+        key: 'Mini KING FUSION au NUTELLA®',
+        source: require('../assets/images/bkicons/nouveautes.png'),
+      },
+      {
+        key: 'Madeleine',
+        source: require('../assets/images/bkicons/nouveautes.png'),
+      },
+      {
+        key: 'Fuze Tea Saveur Citron Vert & Menthe',
+        source: require('../assets/images/bkicons/nouveautes.png'),
+      },
+    ],
+    'Menus': [],'Burgers': [],'Menus enfants': [],'Snacks': [],'Desserts':[]
+  };
 
-  const renderItem: ListRenderItem<CardItem> = ({ item }) => (
+  const renderItem: ListRenderItem<MenuItem> = ({ item }) => (
     <TouchableHighlight style={styles.itemContainer} onPress={() => onPress(item)}>
       <>
       <Text style={styles.title}>{item.key}</Text>
@@ -84,12 +126,11 @@ export default function Second() {
     <View style={[styles.container, styles.safeArea]}>
       <FlatList
         contentContainerStyle={styles.listContainer}
-        data={card}
+        data={cards[item.key]}
         renderItem={renderItem}
         keyExtractor={(item) => item.key}
         numColumns={2}
       />
-      
     </View>
   );
 }

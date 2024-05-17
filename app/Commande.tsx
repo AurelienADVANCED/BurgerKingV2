@@ -3,24 +3,20 @@ import { Text, View, Image, StyleSheet, useColorScheme, FlatList, ListRenderItem
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import React from 'react';
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from './types';
+import { NavigationProp } from '@react-navigation/native';
 
-interface CardItem {
-  key: string;
-  source: any;
-  destination: string;
-}
-
-export default function HomeScreen() {
+export default function Commande() {
   const { bottom, left, right, top } = useSafeAreaInsets();
   const themeName = useColorScheme();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const windowWidth = Dimensions.get('window').width;
   const itemWidth = windowWidth / 2 - 30;
 
   const onPress = (item: CardItem) => {
-    console.log(item.key);
+    navigation.navigate("Menu", { item })
   };
 
   const styles = StyleSheet.create({
@@ -63,12 +59,12 @@ export default function HomeScreen() {
   });
 
   const card: CardItem[] = [
-    { key: 'Nouveautés', source: require('../assets/images/bkicons/nouveautes.png'), destination: 'MenuScreen' },
-    { key: 'Menus', source: require('../assets/images/bkicons/menus.png'), destination: 'MenuScreen' },
-    { key: 'Burgers', source: require('../assets/images/bkicons/burgers.png'), destination: 'MenuScreen' },
-    { key: 'Menus enfants', source: require('../assets/images/bkicons/menus_enfants.png'), destination: 'MenuScreen' },
-    { key: 'Snacks', source: require('../assets/images/bkicons/snacks.png'), destination: 'MenuScreen' },
-    { key: 'Desserts', source: require('../assets/images/bkicons/desserts.png'), destination: 'MenuScreen' },
+    { key: 'Nouveautés', source: require('../assets/images/bkicons/nouveautes.png') },
+    { key: 'Menus', source: require('../assets/images/bkicons/menus.png') },
+    { key: 'Burgers', source: require('../assets/images/bkicons/burgers.png') },
+    { key: 'Menus enfants', source: require('../assets/images/bkicons/menus_enfants.png') },
+    { key: 'Snacks', source: require('../assets/images/bkicons/snacks.png') },
+    { key: 'Desserts', source: require('../assets/images/bkicons/desserts.png') },
   ];
 
   const renderItem: ListRenderItem<CardItem> = ({ item }) => (

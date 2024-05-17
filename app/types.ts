@@ -4,6 +4,7 @@ export type RootStackParamList = {
     LocalisationScreen: undefined;
     CommandeScreen: undefined;
     ConfigurationScreen: undefined;
-    Menu: { category: string };
+    Menu: { item: CardItem };
+    Product: { menuItem: MenuItem };
   };
   

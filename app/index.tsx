@@ -17,11 +17,12 @@ import HomeScreen from './HomeScreen';
 import Localisation from './Localisation';
 import Commande from './Commande';
 import Configuration from './Configuration';
+import Menu from './Menu';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-function HomeTabs() {
+export default function HomeTabs() {
   return (
     <Tab.Navigator
           screenOptions={({ route }) => ({
@@ -50,26 +51,10 @@ function HomeTabs() {
           <Tab.Screen name="Configuration" component={Configuration} />
 
         </Tab.Navigator>
+
+        
   )
 }
-export default function RootLayout() {
-
-
-  return (
-    <SafeAreaProvider>
-      <NavigationContainer independent={true}>
-      <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="HomeTabs" component={HomeTabs} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
-  );
-}
-
 
 const styles = StyleSheet.create({
   header: {
