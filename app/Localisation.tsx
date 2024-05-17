@@ -6,14 +6,11 @@ import React, { useState } from 'react';
 // Icons
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-function resetText() {
-  
-}
+
 export default function Second() {
   const [text, setText] = useState('');
   
   const { bottom, left, right, top } = useSafeAreaInsets();
-
   const themeName = useColorScheme();
   //console.log('ThemeName : ', themeName);
 

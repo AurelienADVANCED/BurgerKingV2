@@ -43,6 +43,12 @@ export default function RootLayout() {
 `;
 
 
+// react-native.config.js
+module.exports = {
+  assets: ['./assets/fonts'],
+};
+
+
 
   fs.mkdir(newAppDirPath, { recursive: true }, (error) => {
     if (error) {

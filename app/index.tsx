@@ -21,24 +21,11 @@ import Configuration from './Configuration';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-function Header({ navigation }) {
-  return (
-    <View style={styles.header}>
-      <TouchableOpacity onPress={() => navigation.navigate('Ticket')}>
-        <Ionicons name="ticket-outline"  size={35} style={{ marginLeft: 20, marginBottom: 10 }}/>
-      </TouchableOpacity>
-      <Image source={require('../assets/images/logo.png')} style={styles.logo} />
-      <TouchableOpacity onPress={() => navigation.navigate('Crown')}>
-        <FontAwesome6 name="crown" size={35} style={{ marginRight: 20, marginBottom: 10 }} />
-      </TouchableOpacity>
-    </View>
-  );
-}
-
 function HomeTabs() {
   return (
     <Tab.Navigator
           screenOptions={({ route }) => ({
+            tabBarLabelStyle: { display: 'none' },
             tabBarIcon: ({ color, size }) => {
             let iconName = '';
 
@@ -54,23 +41,26 @@ function HomeTabs() {
 
             return <Ionicons name={iconName} size={size} color={color} />;
             },
+            headerShown: false,
           })}
         >
-          <Tab.Screen name="HomeScreen" options={{headerShown:false}} component={HomeScreen} />
-          <Tab.Screen name="Localisation" options={{headerShown:false}}  component={Localisation} />
-          <Tab.Screen name="Commande" options={{headerShown:false}} component={Commande} />
-          <Tab.Screen name="Configuration" options={{headerShown:false}}  component={Configuration} />
+          <Tab.Screen name="HomeScreen" component={HomeScreen} />
+          <Tab.Screen name="Localisation" component={Localisation} />
+          <Tab.Screen name="Commande"  component={Commande} />
+          <Tab.Screen name="Configuration" component={Configuration} />
 
         </Tab.Navigator>
   )
 }
 export default function RootLayout() {
+
+
   return (
     <SafeAreaProvider>
       <NavigationContainer independent={true}>
       <Stack.Navigator
           screenOptions={{
-            header: ({ navigation }) => <Header navigation={navigation}/>
+            headerShown: false,
           }}
         >
           <Stack.Screen name="HomeTabs" component={HomeTabs} />
