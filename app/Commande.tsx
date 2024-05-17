@@ -59,12 +59,12 @@ export default function Commande() {
   });
 
   const card: CardItem[] = [
-    { key: 'Nouveautés', source: require('../assets/images/bkicons/nouveautes.png') },
-    { key: 'Menus', source: require('../assets/images/bkicons/menus.png') },
-    { key: 'Burgers', source: require('../assets/images/bkicons/burgers.png') },
-    { key: 'Menus enfants', source: require('../assets/images/bkicons/menus_enfants.png') },
-    { key: 'Snacks', source: require('../assets/images/bkicons/snacks.png') },
-    { key: 'Desserts', source: require('../assets/images/bkicons/desserts.png') },
+    { key: 'Nouveautés', source: require('../assets/images/bkicons/commande/nouveautes.png') },
+    { key: 'Menus', source: require('../assets/images/bkicons/commande/menus.png') },
+    { key: 'Burgers', source: require('../assets/images/bkicons/commande/burgers.png') },
+    { key: 'Menus enfants', source: require('../assets/images/bkicons/commande/menus_enfants.png') },
+    { key: 'Snacks', source: require('../assets/images/bkicons/commande/snacks.png') },
+    { key: 'Desserts', source: require('../assets/images/bkicons/commande/desserts.png') },
   ];
 
   const renderItem: ListRenderItem<CardItem> = ({ item }) => (

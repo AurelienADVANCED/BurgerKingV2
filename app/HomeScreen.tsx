@@ -3,13 +3,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import React from 'react';
 
-interface CardItem {
-  key: string;
-  source?: any;
-  type: 'card' | 'banner' | 'text';
-  content?: string;
-}
-
 export default function Index() {
   const { bottom, left, right, top } = useSafeAreaInsets();
   const router = useRouter();
@@ -97,28 +90,19 @@ export default function Index() {
   });
 
   const cardData: CardItem[] = [
-    { key: 'banner', source: require('../assets/images/Baniere.png'), type: 'banner' },
-    { key: 'textBeforeCards', type: 'text', content: 'Une petite ou une grosse faim ? 🍔' },
-    { key: 'DOUBLE CHEESE BACON XXL', source: require('../assets/images/bkicons/cheese.png'), type: 'card' },
-    { key: 'KING FUSION M&M\'S®', source: require('../assets/images/bkicons/fusion.png'), type: 'card' },
-    { key: 'PETIT WRAP CHICKEN BBQ BACON', source: require('../assets/images/bkicons/wrap.png'), type: 'card' },
-    { key: 'VEGGIE CHICKEN LOUISIANE STEAKHOUSE', source: require('../assets/images/bkicons/veggie.png'), type: 'card' },
+    { key: 'DOUBLE CHEESE BACON XXL', source: require('../assets/images/bkicons/accueil/cheese.png')},
+    { key: 'KING FUSION M&M\'S®', source: require('../assets/images/bkicons/accueil/fusion.png')},
+    { key: 'PETIT WRAP CHICKEN BBQ BACON', source: require('../assets/images/bkicons/accueil/wrap.png')},
+    { key: 'VEGGIE CHICKEN LOUISIANE STEAKHOUSE', source: require('../assets/images/bkicons/accueil/veggie.png')},
   ];
 
   const renderItem: ListRenderItem<CardItem> = ({ item }) => {
-    if (item.type === 'banner') {
-      return <Image style={styles.baniere} source={item.source} />;
-    } else if (item.type === 'text') {
-      return <Text style={styles.texte}>{item.content}</Text>;
-    } else if (item.type === 'card') {
-      return (
-        <View style={styles.itemContainer}>
-          <Text style={styles.title}>{item.key}</Text>
-          <Image style={styles.logo} source={item.source} />
-        </View>
-      );
-    }
-    return null;
+    return (
+      <View style={styles.itemContainer}>
+        <Text style={styles.title}>{item.key}</Text>
+        <Image style={styles.logo} source={item.source} />
+      </View>
+    );
   };
 
   return (

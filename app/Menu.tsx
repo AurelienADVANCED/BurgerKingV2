@@ -63,51 +63,51 @@ export default function Menu() {
     'Nouveautés': [
       {
         key: 'Japan Cheesy Steakhouse',
-        source: require('../assets/images/bkicons/nouveautes.png'),
+        source: require('../assets/images/bkicons/boeuf/JapanSteakhouse.png'),
       },
       {
         key: 'Indian Chicken Steakhouse',
-        source: require('../assets/images/bkicons/nouveautes.png'),
+        source: require('../assets/images/bkicons/poulet/IndianChickenSteakhouse.png'),
       },
       {
         key: 'French Steakhouse',
-        source: require('../assets/images/bkicons/nouveautes.png'),
+        source: require('../assets/images/bkicons/commande/nouveautes.png'),
       },
       {
         key: 'Veggie Japan Steakhouse',
-        source: require('../assets/images/bkicons/nouveautes.png'),
+        source: require('../assets/images/bkicons/commande/nouveautes.png'),
       },
       {
         key: 'Chicken Spicy',
-        source: require('../assets/images/bkicons/nouveautes.png'),
+        source: require('../assets/images/bkicons/commande/nouveautes.png'),
       },
       {
         key: 'Italian Chicken Bowl',
-        source: require('../assets/images/bkicons/nouveautes.png'),
+        source: require('../assets/images/bkicons/commande/nouveautes.png'),
       },
       {
         key: 'King Fusion Smarties®',
-        source: require('../assets/images/bkicons/nouveautes.png'),
+        source: require('../assets/images/bkicons/commande/nouveautes.png'),
       },
       {
         key: 'Mini KING FUSION Smarties®',
-        source: require('../assets/images/bkicons/nouveautes.png'),
+        source: require('../assets/images/bkicons/commande/nouveautes.png'),
       },
       {
         key: 'KING FUSION au Nutella®',
-        source: require('../assets/images/bkicons/nouveautes.png'),
+        source: require('../assets/images/bkicons/commande/nouveautes.png'),
       },
       {
         key: 'Mini KING FUSION au NUTELLA®',
-        source: require('../assets/images/bkicons/nouveautes.png'),
+        source: require('../assets/images/bkicons/commande/nouveautes.png'),
       },
       {
         key: 'Madeleine',
-        source: require('../assets/images/bkicons/nouveautes.png'),
+        source: require('../assets/images/bkicons/commande/nouveautes.png'),
       },
       {
         key: 'Fuze Tea Saveur Citron Vert & Menthe',
-        source: require('../assets/images/bkicons/nouveautes.png'),
+        source: require('../assets/images/bkicons/commande/nouveautes.png'),
       },
     ],
     'Menus': [],'Burgers': [],'Menus enfants': [],'Snacks': [],'Desserts':[]
